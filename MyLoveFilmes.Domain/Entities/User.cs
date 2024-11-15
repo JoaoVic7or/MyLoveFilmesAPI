@@ -10,6 +10,6 @@
 
         public Roles Roles { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
-        public ICollection<Ratings> Ratings { get; private set; }
+        public ICollection<Rating> Ratings { get; private set; }
     }
 }

@@ -1,21 +1,16 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command;
 
 namespace MyLoveFIlmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public AuthController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
+        public AuthController(IMediator mediator) : base(mediator) { }
 
         [AllowAnonymous]
         [HttpPost("login")]

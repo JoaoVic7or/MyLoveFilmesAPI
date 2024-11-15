@@ -12,6 +12,6 @@
         public List<MovieGenres> MovieGenres { get;  set; }
 
         public List<Comment> Comments { get;  set; }
-        public List<Ratings> Ratings { get;  set; }
+        public List<Rating> Ratings { get;  set; }
     }
 }

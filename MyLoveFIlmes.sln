@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLoveFIlmes", "MyLoveFIlmes\MyLoveFIlmes.csproj", "{794610D8-BD55-4869-A8EA-ACCBB1F15394}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLoveFilmes", "MyLoveFIlmes\MyLoveFilmes.csproj", "{794610D8-BD55-4869-A8EA-ACCBB1F15394}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLoveFilmes.Core", "MyLoveFilmes.Core\MyLoveFilmes.Core.csproj", "{039A29E2-8741-4A8C-93EB-65007C4DD198}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{2890C8D6-AA30-4954-AD0A-E9EE4D13FCB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6F3E3AAA-5998-47D0-B335-7338E6BF11B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{103C1C1D-E776-4E5B-BD60-253E684D59AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLoveFilmes.Shared", "MyLoveFilmes.Shared\MyLoveFilmes.Shared.csproj", "{89889F07-1E81-4B48-BBE1-FF64F1A33DAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{858C93EE-B4E4-4571-B60B-86F732517600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858C93EE-B4E4-4571-B60B-86F732517600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858C93EE-B4E4-4571-B60B-86F732517600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89889F07-1E81-4B48-BBE1-FF64F1A33DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89889F07-1E81-4B48-BBE1-FF64F1A33DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89889F07-1E81-4B48-BBE1-FF64F1A33DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89889F07-1E81-4B48-BBE1-FF64F1A33DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +58,6 @@ Global
 		{039A29E2-8741-4A8C-93EB-65007C4DD198} = {6138F64E-277F-4F6A-A43C-98158236465B}
 		{83239038-E411-4519-B284-57F0A4D29A25} = {EA61F7AC-7E97-4D45-A2ED-231AF3E23B43}
 		{858C93EE-B4E4-4571-B60B-86F732517600} = {2890C8D6-AA30-4954-AD0A-E9EE4D13FCB8}
+		{89889F07-1E81-4B48-BBE1-FF64F1A33DAE} = {103C1C1D-E776-4E5B-BD60-253E684D59AD}
 	EndGlobalSection
 EndGlobal

@@ -4,6 +4,8 @@ using MyLoveFilmes.Shared.Domain.Result;
 
 namespace MyLoveFilmes.Core.Command.Movies
 {
-    public class GetAllMoviesCommand : IRequest<Result<List<MovieDTO>>>
-    { }
+    public class GetMovieByIdCommand : IRequest<Result<MovieDTO>>
+    {
+        public long Id { get; set; }
+    }
 }

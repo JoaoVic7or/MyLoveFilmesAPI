@@ -4,9 +4,9 @@ using MyLoveFilmes.Domain.Entities;
 
 namespace MyLoveFilmes.Infra.Configuration
 {
-    public class RatingsConfiguration : IEntityTypeConfiguration<Ratings>
+    public class RatingsConfiguration : IEntityTypeConfiguration<Rating>
     {
-        public void Configure(EntityTypeBuilder<Ratings> builder)
+        public void Configure(EntityTypeBuilder<Rating> builder)
         {
             builder.ToTable("tb_movie_ratings");
 
@@ -20,7 +20,7 @@ namespace MyLoveFilmes.Infra.Configuration
                    .HasColumnName("movieid")
                    .IsRequired();
 
-            builder.Property(x => x.Rating)
+            builder.Property(x => x.RatingValue)
                    .HasColumnName("rating")
                    .IsRequired();
 

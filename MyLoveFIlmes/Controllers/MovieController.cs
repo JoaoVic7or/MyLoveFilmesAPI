@@ -1,8 +1,9 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command.Movies;
+using MyLoveFilmes.Domain.Roles;
 using MyLoveFilmes.Extensions;
 using MyLoveFilmes.Shared.Domain.Result;
 
@@ -35,6 +36,24 @@ namespace MyLoveFilmes.Controllers
         [AllowAnonymous]
         [HttpGet("GetRandomMovies")]
         public async Task<IActionResult> GetRandomMoviesAsync([FromQuery] GetRandomMoviesCommand command) //mudar banco
+        {
+            Result result = await _mediator.Send(command);
+
+            return ResultHelper.AsResult(result);
+        }
+
+        [Authorize(Roles = Permissions.Administrator)]
+        [HttpPost("InsertMovie")]
+        public async Task<IActionResult> InsertMovieAsync([FromBody] InsertMovieCommand command)
+        {
+            Result result = await _mediator.Send(command);
+
+            return ResultHelper.AsResult(result);
+        }
+
+        [Authorize(Roles = Permissions.Administrator)]
+        [HttpPatch("UpdateMovie")]
+        public async Task<IActionResult> UpdateMovieAsync([FromBody] UpdateMovieCommand command)
         {
             Result result = await _mediator.Send(command);
 

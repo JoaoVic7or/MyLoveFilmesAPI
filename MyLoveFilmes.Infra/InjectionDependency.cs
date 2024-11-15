@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using MyLoveFilmes.Infra.Interfaces;
 using MyLoveFilmes.Infra.Interfaces.Comments;
 using MyLoveFilmes.Infra.Interfaces.Ratings;
@@ -27,6 +27,7 @@ namespace MyLoveFilmes.Infra
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

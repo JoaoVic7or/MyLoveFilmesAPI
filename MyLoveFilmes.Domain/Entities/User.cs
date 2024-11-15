@@ -1,4 +1,4 @@
-﻿namespace MyLoveFilmes.Domain.Entities
+namespace MyLoveFilmes.Domain.Entities
 {
     public class User
     {
@@ -11,5 +11,19 @@
         public Roles Roles { get; private set; }
         public ICollection<Comment> Comments { get; private set; }
         public ICollection<Rating> Ratings { get; private set; }
+
+        public void UpdatePassword(string newPassword)
+        {
+            Password = newPassword;
+        }
+
+        public User()
+        { }
+
+        public User(string name, string email, string password, int roleId)
+        {
+            Name = name;
+            Password = password;
+        }
     }
 }

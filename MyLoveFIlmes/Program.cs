@@ -56,6 +56,7 @@ builder.Services.AddAuthentication(cfg => {
     };
 });
 
+builder.Services.AddMemoryCache();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

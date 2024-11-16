@@ -13,7 +13,7 @@ namespace MyLoveFilmes.Infra.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<List<Movie>> GetAllMovies(CancellationToken cancellationToken)
+        public async Task<List<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken)
         {
             IQueryable<Movie> query = _appDbContext.Movies.AsQueryable();
 
@@ -21,9 +21,12 @@ namespace MyLoveFilmes.Infra.Repositories
                               .Include(x => x.MovieGenres)
                               .ThenInclude(y => y.Genre)
                               .OrderByDescending(x => x.ReleaseYear)
+                              .Skip((page - 1) * pageSize)
+                              .Take(pageSize)
                               .AsNoTracking()
                               .ToListAsync(cancellationToken);
         }
+
         public async Task<List<Movie>> GetMoviesRandom(CancellationToken cancellationToken)
         {
             IQueryable<Movie> query = _appDbContext.Movies;

@@ -1,9 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using MyLoveFilmes.Infra.Interfaces;
 using MyLoveFilmes.Infra.Interfaces.Comments;
+using MyLoveFilmes.Infra.Interfaces.Genres;
 using MyLoveFilmes.Infra.Interfaces.Ratings;
 using MyLoveFilmes.Infra.Repositories;
 using MyLoveFilmes.Infra.Repositories.Comments;
+using MyLoveFilmes.Infra.Repositories.Genres;
 using MyLoveFilmes.Infra.Repositories.Ratings;
 
 namespace MyLoveFilmes.Infra
@@ -28,6 +30,7 @@ namespace MyLoveFilmes.Infra
             services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
         }
     }
 }

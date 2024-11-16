@@ -4,11 +4,11 @@ using MyLoveFilmes.Domain.Entities;
 
 namespace MyLoveFilmes.Core.Mapper
 {
-    public class RatingMapper : Profile
+    public class CommentMapper : Profile
     {
-        public RatingMapper() 
+        public CommentMapper()
         {
-            CreateMap<Rating, RatingDTO>()
+            CreateMap<Comment, CommentDTO>()
                 .ForMember(dest => dest.MovieName, ori => ori.MapFrom(x => x.Movie.Name));
         }
     }

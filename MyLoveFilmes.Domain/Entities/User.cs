@@ -20,10 +20,12 @@ namespace MyLoveFilmes.Domain.Entities
         public User()
         { }
 
-        public User(string name, string email, string password, int roleId)
+        public User(string name, string email, string password, int roleId = 1)
         {
             Name = name;
+            Email = email;
             Password = password;
+            RoleId = roleId;
         }
     }
 }

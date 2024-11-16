@@ -1,5 +1,4 @@
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command.Comments;
@@ -27,6 +26,14 @@ namespace MyLoveFilmes.Controllers
         //[Authorize]
         [HttpDelete("DeleteComment")]
         public async Task<IActionResult> DeleteCommentAsync([FromBody] DeleteCommentCommand command)
+        {
+            Result result = await _mediator.Send(command);
+
+            return ResultHelper.AsResult(result);
+        }
+
+        [HttpGet("GetCommentsByUser")]
+        public async Task<IActionResult> GetCommentsByUserAsync([FromQuery] GetCommentsByUserCommand command)
         {
             Result result = await _mediator.Send(command);
 

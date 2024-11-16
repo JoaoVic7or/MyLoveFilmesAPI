@@ -26,5 +26,13 @@ namespace MyLoveFilmes.Infra.Repositories.Ratings
 
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task<List<Rating>> GetAllRatingsByUserAsync(long userId)
+        {
+            return await _appDbContext.Ratings.Where(x => x.UserId == userId)
+                                              .Include(x => x.Movie)
+                                              .AsNoTracking()
+                                              .ToListAsync();
+        }
     }
 }

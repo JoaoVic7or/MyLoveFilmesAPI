@@ -6,5 +6,6 @@ namespace MyLoveFilmes.Infra.Interfaces.Ratings
     {
         Task<Rating> GetRatingByUserId(long userId, long movieId);
         Task InsertRatingAsync(Rating rating);
+        Task<List<Rating>> GetAllRatingsByUserAsync(long userId);
     }
 }

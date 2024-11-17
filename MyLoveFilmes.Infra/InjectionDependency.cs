@@ -5,6 +5,7 @@ using MyLoveFilmes.Infra.Interfaces.Genres;
 using MyLoveFilmes.Infra.Interfaces.Ratings;
 using MyLoveFilmes.Infra.Repositories;
 using MyLoveFilmes.Infra.Repositories.Comments;
+using MyLoveFilmes.Infra.Repositories.FavoritesMovies;
 using MyLoveFilmes.Infra.Repositories.Genres;
 using MyLoveFilmes.Infra.Repositories.Ratings;
 
@@ -31,6 +32,8 @@ namespace MyLoveFilmes.Infra
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IFavoriteMoviesRepository, FavoriteMoviesRepository>();
+            services.AddScoped<IWishListMovieRepository, WishListMovieRepository>();
         }
     }
 }

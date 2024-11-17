@@ -7,5 +7,6 @@ namespace MyLoveFilmes.Domain.Entities
         public string Image { get; set; }
 
         public Movie Movie { get; private set; }
+        public List<WishListMovie> WishListMovie { get; private set; }
     }
 }

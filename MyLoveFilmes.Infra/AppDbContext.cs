@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MyLoveFilmes.Domain.Entities;
 using System.Reflection;
 
@@ -6,7 +6,7 @@ namespace MyLoveFilmes.Infra
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) 
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,5 +54,7 @@ namespace MyLoveFilmes.Infra
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<MovieGenres> MovieGenres { get; set; }
+        public DbSet<FavoriteMovies> FavoriteMovies { get; set; }
+        public DbSet<WishListMovie> WishListMovies { get; set; }
     }
 }

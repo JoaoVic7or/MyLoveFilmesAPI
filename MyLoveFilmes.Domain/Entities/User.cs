@@ -12,7 +12,6 @@ namespace MyLoveFilmes.Domain.Entities
         public ICollection<Comment> Comments { get; private set; }
         public ICollection<Rating> Ratings { get; private set; }
         public List<FavoriteMovies> FavoriteMovies { get; private set; }
-        public List<WishListMovie> WishListMovies { get; private set; }
 
         public void UpdatePassword(string newPassword)
         {

@@ -33,7 +33,6 @@ namespace MyLoveFilmes.Infra
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IFavoriteMoviesRepository, FavoriteMoviesRepository>();
-            services.AddScoped<IWishListMovieRepository, WishListMovieRepository>();
         }
     }
 }

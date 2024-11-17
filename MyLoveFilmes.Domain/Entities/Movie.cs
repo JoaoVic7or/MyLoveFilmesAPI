@@ -14,6 +14,5 @@ namespace MyLoveFilmes.Domain.Entities
         public List<Comment> Comments { get; set; }
         public List<Rating> Ratings { get; set; }
         public List<FavoriteMovies> FavoriteMovies { get; set; }
-        public List<WishListMovie> WishListMovies { get; set; }
     }
 }

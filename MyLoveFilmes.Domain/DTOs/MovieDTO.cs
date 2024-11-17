@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace MyLoveFilmes.Domain.DTOs
 {
@@ -17,8 +17,6 @@ namespace MyLoveFilmes.Domain.DTOs
 
         //public ICollection<CommentDTO> Comments { get; set; }
         //public ICollection<RatingsDTO> Ratings { get; set; }
-        public List<int> Genres { get; set; }
-
-        //public List<GenreDTO> SelectedGenres { get; set; }
+        public List<GenreDTO> Genres { get; set; }
     }
 }

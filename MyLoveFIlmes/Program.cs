@@ -5,13 +5,17 @@ using MyLoveFilmes.Infra;
 using MyLoveFIlmes.Middlewares;
 using System.Reflection;
 using System.Text;
+using MyLoveFilmes.Core.Services;
+using MyLoveFilmes.Core.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddRepositoriesApplication();
+builder.Services.AddScoped<IUserContextService, UserContextService>();
 builder.Services.AddMediatR(configuration =>
 {
     var referencedAssemblies = Directory
@@ -89,7 +93,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
-app.UseMiddleware<JwtAuthenticationMiddleware>();
+//app.UseMiddleware<JwtAuthenticationMiddleware>();
 app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.

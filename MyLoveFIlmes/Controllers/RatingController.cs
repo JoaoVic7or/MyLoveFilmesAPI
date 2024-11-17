@@ -1,9 +1,8 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command.Ratings;
-using MyLoveFilmes.Domain.Roles;
 using MyLoveFilmes.Extensions;
 using MyLoveFilmes.Shared.Domain.Result;
 
@@ -17,7 +16,7 @@ namespace MyLoveFilmes.Controllers
 
         [Authorize]
         [HttpPost("InsertRating")]
-        public async Task<IActionResult> InsertRatingAsync([FromBody] InsertRatingCommand command) 
+        public async Task<IActionResult> InsertRatingAsync([FromBody] InsertRatingCommand command)
         {
             Result result = await _mediator.Send(command);
 

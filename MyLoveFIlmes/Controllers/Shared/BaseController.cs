@@ -1,5 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyLoveFilmes.Controllers.Shared
@@ -11,6 +11,13 @@ namespace MyLoveFilmes.Controllers.Shared
         public BaseController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        protected long GetUserId()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            return long.Parse(userId);
         }
     }
 }

@@ -55,5 +55,6 @@ namespace MyLoveFilmes.Infra
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<MovieGenres> MovieGenres { get; set; }
         public DbSet<FavoriteMovies> FavoriteMovies { get; set; }
+        public DbSet<WatchList> WatchLists { get; set; }
     }
 }

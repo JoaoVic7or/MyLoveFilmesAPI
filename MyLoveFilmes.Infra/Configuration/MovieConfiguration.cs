@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyLoveFilmes.Domain.Entities;
 
@@ -29,10 +29,6 @@ namespace MyLoveFilmes.Infra.Configuration
 
             builder.Property(x => x.ReleaseYear)
                    .HasColumnName("releaseyear");
-
-            builder.HasMany(x => x.MovieGenres)
-                   .WithOne(x => x.Movie)
-                   .HasForeignKey(x => x.MovieId);
         }
     }
 }

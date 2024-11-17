@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -43,16 +43,6 @@ namespace MyLoveFIlmes.Middlewares
                     }
                 }
             }
-
-            /*if (!context.User.Identity.IsAuthenticated)
-            {
-                if (!context.Request.Path.StartsWithSegments("/Login") &&
-                    !context.Request.Path.StartsWithSegments("/Register"))
-                {
-                    context.Response.Redirect("/Login/Index");
-                    return;
-                }
-            }*/
 
             await _next(context);
         }

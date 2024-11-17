@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using MyLoveFilmes.Core.Command;
@@ -68,14 +68,12 @@ namespace MyLoveFilmes.Core.CommandHandler
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
             };
 
             var roleName = await _roleRepository.GetRolesByIdAsync(user.RoleId);
             if (roleName != null)
             {
                 claims.Add(new Claim(ClaimTypes.Role, roleName));
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -85,11 +83,12 @@ namespace MyLoveFilmes.Core.CommandHandler
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddDays(30),
                 signingCredentials: creds
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }

@@ -2,9 +2,9 @@ using MediatR;
 using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Shared.Domain.Result;
 
-namespace MyLoveFilmes.Core.Command.Ratings
+namespace MyLoveFilmes.Core.Command.WatchsLists
 {
-    public class GetAllRatingsByUserCommand : IRequest<Result<List<RatingDTO>>>
+    public class GetWatchListByUserCommand : IRequest<Result<List<WatchListDTO>>>
     {
         public long UserId { get; set; }
     }

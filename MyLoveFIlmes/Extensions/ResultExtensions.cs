@@ -9,7 +9,8 @@ namespace MyLoveFilmes.Extensions
         {
             if (result.IsSuccess)
             {
-                return new OkObjectResult(result.GetObjectValue());
+                var response = string.IsNullOrEmpty(result.Detail) ? result.GetObjectValue() : result.Detail;
+                return new OkObjectResult(response);
             }
 
             return new ObjectResult(new { error = result.Error, detail = result.Detail })

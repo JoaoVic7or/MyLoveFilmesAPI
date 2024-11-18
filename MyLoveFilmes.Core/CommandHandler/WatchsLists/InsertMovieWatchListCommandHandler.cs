@@ -35,7 +35,7 @@ namespace MyLoveFilmes.Core.CommandHandler.WatchsLists
             try
             {
                 await _watchListRepository.InsertMovieInWatchList(watchList);
-                return Result.Success();
+                return Result.Success("Filme inserido na lista com sucesso!");
             }
             catch (Exception ex)
             {

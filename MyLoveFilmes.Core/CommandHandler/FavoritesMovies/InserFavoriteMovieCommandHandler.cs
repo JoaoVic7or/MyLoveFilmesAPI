@@ -35,7 +35,7 @@ namespace MyLoveFilmes.Core.CommandHandler.FavoritesMovies
             try
             {
                 await _favoriteMoviesRepository.InsertFavoriteMovie(favoriteMovies);
-                return Result.Success();
+                return Result.Success("Filme inserido na sua lista com sucesso");
             }
             catch (Exception ex)
             {

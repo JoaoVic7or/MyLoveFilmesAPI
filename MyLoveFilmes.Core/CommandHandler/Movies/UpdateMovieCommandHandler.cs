@@ -37,7 +37,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Movies
             try
             {
                 await _movieRepository.UpdateMovieAsync(movie, cancellationToken);
-                return Result.Success();
+                return Result.Success("Filme atualizado com sucesso!");
             }
             catch (Exception ex)
             {

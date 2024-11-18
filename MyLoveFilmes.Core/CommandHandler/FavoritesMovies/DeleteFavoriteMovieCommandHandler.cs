@@ -33,7 +33,7 @@ namespace MyLoveFilmes.Core.CommandHandler.FavoritesMovies
             try
             {
                 await _favoriteMoviesRepository.DeleteFavoriteMovieAsync(favoriteMovies);
-                return Result.Success("Filme removido da lista com sucesso!");
+                return Result.Success("Filme deletado da sua lista com sucesso");
             }
             catch (Exception ex)
             {

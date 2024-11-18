@@ -46,7 +46,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Movies
 
                 await _movieRepository.InsertMovieAsync(movie, cancellationToken);
 
-                return Result.Success();
+                return Result.Success("Filme cadastrado com sucesso!");
             }
             catch (Exception ex)
             {

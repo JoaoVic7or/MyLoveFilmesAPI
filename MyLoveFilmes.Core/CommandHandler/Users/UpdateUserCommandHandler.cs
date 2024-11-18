@@ -39,7 +39,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Users
             try
             {
                 await _userRepository.UpdateUserAsync(user);
-                return Result.Success();
+                return Result.Success("Usuário atualizado com sucesso");
             }
             catch (Exception ex)
             {

@@ -32,7 +32,7 @@ namespace MyLoveFilmes.Core.CommandHandler.WatchsLists
             try
             {
                 await _watchListRepository.DeleteMovieFromWatchList(command.UserId, command.MovieId);
-                return Result.Success();
+                return Result.Success("Filme removido da lista com sucesso!");
             }
             catch (Exception ex)
             {

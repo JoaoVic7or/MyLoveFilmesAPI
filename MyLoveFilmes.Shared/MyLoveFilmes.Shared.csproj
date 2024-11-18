@@ -6,4 +6,10 @@
     <Nullable>annotations</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Domain\DataTable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\DataTable\" />
+  </ItemGroup>
 </Project>

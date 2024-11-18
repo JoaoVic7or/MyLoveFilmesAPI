@@ -35,7 +35,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Ratings
             try
             {
                 await _ratingRepository.InsertRatingAsync(newRating);
-                return Result.Success("Filme inserido com sucesso!");
+                return Result.Success("Avaliação enviada!");
             }
             catch (Exception ex)
             {

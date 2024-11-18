@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyLoveFilmes.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class WatchListController : BaseController
     {
         public WatchListController(IMediator mediator) : base(mediator) { }

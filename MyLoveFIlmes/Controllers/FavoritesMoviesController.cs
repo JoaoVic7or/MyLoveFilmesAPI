@@ -8,6 +8,8 @@ using MyLoveFilmes.Core.Command.FavoritesMovies;
 
 namespace MyLoveFilmes.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FavoritesMoviesController : BaseController
     {
         public FavoritesMoviesController(IMediator mediator) : base(mediator) { }

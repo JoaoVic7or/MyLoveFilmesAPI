@@ -7,5 +7,13 @@ namespace MyLoveFilmes.Domain.Entities
 
         public Movie Movie { get; private set; }
         public User User { get; private set; }
+
+        public FavoriteMovies() { }
+
+        public FavoriteMovies(long movieId, long userId)
+        {
+            MovieId = movieId;
+            UserId = userId;
+        }
     }
 }

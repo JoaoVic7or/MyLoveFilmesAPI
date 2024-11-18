@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MediatR;
 using MyLoveFilmes.Core.Command.Ratings;
 using MyLoveFilmes.Domain.DTOs;

@@ -2,7 +2,7 @@ using MediatR;
 using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Shared.Domain.Result;
 
-namespace MyLoveFilmes.Core.Command.Users
+namespace MyLoveFilmes.Core.Command.FavoritesMovies
 {
     public class GetFavoritesMoviesByUserCommand : IRequest<Result<List<FavoriteMoviesDTO>>>
     {

@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command.Comments;
@@ -14,7 +15,7 @@ namespace MyLoveFilmes.Controllers
         public CommentController(IMediator mediator) : base(mediator)
         { }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("InsertComment")]
         public async Task<IActionResult> InsertCommentAsync([FromBody] InsertCommentCommand command)
         {
@@ -23,7 +24,7 @@ namespace MyLoveFilmes.Controllers
             return ResultHelper.AsResult(result);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("DeleteComment")]
         public async Task<IActionResult> DeleteCommentAsync([FromBody] DeleteCommentCommand command)
         {

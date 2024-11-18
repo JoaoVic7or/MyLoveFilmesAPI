@@ -1,4 +1,4 @@
-﻿namespace MyLoveFilmes.Shared.Domain
+namespace MyLoveFilmes.Shared.Domain
 {
     public enum StatusCode
     {

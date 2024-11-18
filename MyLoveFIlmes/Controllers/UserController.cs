@@ -31,14 +31,5 @@ namespace MyLoveFilmes.Controllers
 
             return ResultHelper.AsResult(result);
         }
-
-        //[Authorize]
-        [HttpGet("GetFavoritesMoviesByUser")]
-        public async Task<IActionResult> GetFavoritesMoviesByUser([FromQuery] GetFavoritesMoviesByUserCommand command)
-        {
-            Result result = await _mediator.Send(command);
-
-            return ResultHelper.AsResult(result);
-        }
     }
 }

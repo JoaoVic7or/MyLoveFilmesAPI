@@ -20,5 +20,24 @@ namespace MyLoveFilmes.Infra.Repositories.FavoritesMovies
                                                      .AsNoTracking()
                                                      .ToListAsync();
         }
+
+        public async Task InsertFavoriteMovie(FavoriteMovies favoritesMovies)
+        {
+            _appDbContext.FavoriteMovies.Add(favoritesMovies);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<FavoriteMovies> GetFavorieMovieByUser(long userId, long movieId)
+        {
+            return await _appDbContext.FavoriteMovies.Where(x => x.UserId == userId)
+                                                     .Where(x => x.MovieId == movieId)
+                                                     .FirstOrDefaultAsync();
+        }
+
+        public async Task DeleteFavoriteMovieAsync(FavoriteMovies favoriteMovies)
+        {
+            _appDbContext.FavoriteMovies.Remove(favoriteMovies);
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }

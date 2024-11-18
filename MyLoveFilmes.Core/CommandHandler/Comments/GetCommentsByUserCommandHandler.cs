@@ -1,8 +1,7 @@
-using System.Security.Claims;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using MyLoveFilmes.Core.Command.Comments;
+using MyLoveFilmes.Core.Services.Interfaces;
 using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Domain.Entities;
 using MyLoveFilmes.Infra.Interfaces.Comments;
@@ -14,20 +13,20 @@ namespace MyLoveFilmes.Core.CommandHandler.Comments
     {
         private readonly IMapper _mapper;
         private readonly ICommentRepository _commentRepository;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserContextService _userContext;
 
-        public GetCommentsByUserCommandHandler(IMapper mapper, ICommentRepository commentRepository, IHttpContextAccessor httpContextAccessor)
+        public GetCommentsByUserCommandHandler(IMapper mapper, ICommentRepository commentRepository, IUserContextService userContext)
         {
             _commentRepository = commentRepository;
             _mapper = mapper;
-            _httpContextAccessor = httpContextAccessor;
+            _userContext = userContext;
         }
 
         public async Task<Result<List<CommentDTO>>> Handle(GetCommentsByUserCommand command, CancellationToken cancellationToken)
         {
-            var userLogged = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            string userLogged = _userContext.GetUserLogged();
 
-            if (command.UserId.ToString() != userLogged.ToString())
+            if (command.UserId.ToString() != userLogged)
                 return Result.Unauthorized("Você não tem permissão para realizar esta ação.");
 
             List<Comment> comments = await _commentRepository.GetCommentsByUser(command.UserId);

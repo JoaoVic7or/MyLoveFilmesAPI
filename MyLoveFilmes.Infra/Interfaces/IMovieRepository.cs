@@ -10,6 +10,6 @@ namespace MyLoveFilmes.Infra.Interfaces
         Task<Movie> GetMovieById(long id, CancellationToken cancellationToken);
         Task UpdateMovieAsync(Movie movie, CancellationToken cancelToken);
 
-        List<Movie> GetMovieByName(string name);
+        Task<List<Movie>> GetMovieByName(string name);
     }
 }

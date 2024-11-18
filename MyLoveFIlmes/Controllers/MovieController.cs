@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyLoveFilmes.Controllers.Shared;
 using MyLoveFilmes.Core.Command.Movies;
+using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Domain.Roles;
 using MyLoveFilmes.Extensions;
 using MyLoveFilmes.Shared.Domain.Result;
@@ -54,6 +55,15 @@ namespace MyLoveFilmes.Controllers
         [Authorize(Roles = Permissions.Administrator)]
         [HttpPatch("UpdateMovie")]
         public async Task<IActionResult> UpdateMovieAsync([FromBody] UpdateMovieCommand command)
+        {
+            Result result = await _mediator.Send(command);
+
+            return ResultHelper.AsResult(result);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("GetMovieByName")]
+        public async Task<IActionResult> SearchMovie([FromQuery] SearchMovieCommand command)
         {
             Result result = await _mediator.Send(command);
 

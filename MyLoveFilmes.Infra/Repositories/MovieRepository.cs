@@ -110,13 +110,13 @@ namespace MyLoveFilmes.Infra.Repositories
             await _appDbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public List<Movie> GetMovieByName(string name)
+        public async Task<List<Movie>> GetMovieByName(string name)
         {
             IQueryable<Movie> query = _appDbContext.Movies.Where(x => x.Name.ToUpper().Contains(name.ToUpper()))
                                                           .AsQueryable();
 
-            List<Movie> movies = query.AsNoTracking()
-                                      .ToList();
+            List<Movie> movies = await query.AsNoTracking()
+                                            .ToListAsync();
 
             return movies;
         }

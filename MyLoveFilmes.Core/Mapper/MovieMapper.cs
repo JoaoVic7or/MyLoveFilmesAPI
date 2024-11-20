@@ -1,6 +1,7 @@
 using AutoMapper;
 using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Domain.Entities;
+using MyLoveFilmes.Shared.Domain.DataTable;
 
 namespace MyLoveFilmes.Core.Mapper
 {
@@ -12,6 +13,8 @@ namespace MyLoveFilmes.Core.Mapper
                 .ForMember(dest => dest.Poster, ori => ori.MapFrom(x => x.Poster.Image))
                 .ForMember(dest => dest.AverageRating, opt => opt.MapFrom(src => src.Ratings.Any() ? src.Ratings.Average(r => r.RatingValue) : 0))
                 .ForMember(dest => dest.Genres, opt => opt.MapFrom(src => src.MovieGenres.Select(x => x.Genre)));
+
+            CreateMap<DataGridView<Movie>, DataGridView<MovieDTO>>();
         }
     }
 }

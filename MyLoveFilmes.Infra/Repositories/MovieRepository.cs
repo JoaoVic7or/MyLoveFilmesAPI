@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyLoveFilmes.Domain.Entities;
 using MyLoveFilmes.Infra.Interfaces;
+using MyLoveFilmes.Shared.Domain.DataTable;
 
 namespace MyLoveFilmes.Infra.Repositories
 {
@@ -13,18 +14,28 @@ namespace MyLoveFilmes.Infra.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<List<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken)
+        public async Task<DataGridView<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken)
         {
-            IQueryable<Movie> query = _appDbContext.Movies.AsQueryable();
+            IQueryable<Movie> query = _appDbContext.Movies.AsQueryable()
+                                                          .Include(x => x.Poster)
+                                                          .Include(x => x.MovieGenres)
+                                                          .ThenInclude(y => y.Genre)
+                                                          .OrderByDescending(x => x.ReleaseYear);
 
-            return await query.Include(x => x.Poster)
-                              .Include(x => x.MovieGenres)
-                              .ThenInclude(y => y.Genre)
-                              .OrderByDescending(x => x.ReleaseYear)
-                              .Skip((page - 1) * pageSize)
-                              .Take(pageSize)
-                              .AsNoTracking()
-                              .ToListAsync(cancellationToken);
+            int totalItems = await query.CountAsync(cancellationToken);
+
+            List<Movie> list = await query.AsNoTracking()
+                                          .Skip((page - 1) * pageSize)
+                                          .Take(pageSize)
+                                          .ToListAsync(cancellationToken);
+
+            return new DataGridView<Movie>()
+            {
+                Data = list,
+                RecordsTotal = totalItems,
+                RecordsFiltered = list.Count
+                
+            };
         }
 
         public async Task<List<Movie>> GetMoviesRandom(CancellationToken cancellationToken)

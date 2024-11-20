@@ -1,10 +1,11 @@
 ﻿using MyLoveFilmes.Domain.Entities;
+using MyLoveFilmes.Shared.Domain.DataTable;
 
 namespace MyLoveFilmes.Infra.Interfaces
 {
     public interface IMovieRepository
     {
-        Task<List<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken);
+        Task<DataGridView<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken);
         Task<List<Movie>> GetMoviesRandom(CancellationToken cancellationToken);
         Task InsertMovieAsync(Movie movie, CancellationToken cancellationToken);
         Task<Movie> GetMovieById(long id, CancellationToken cancellationToken);

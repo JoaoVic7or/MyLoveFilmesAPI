@@ -5,11 +5,12 @@ using MyLoveFilmes.Core.Command.Movies;
 using MyLoveFilmes.Domain.DTOs;
 using MyLoveFilmes.Domain.Entities;
 using MyLoveFilmes.Infra.Interfaces;
+using MyLoveFilmes.Shared.Domain.DataTable;
 using MyLoveFilmes.Shared.Domain.Result;
 
 namespace MyLoveFilmes.Core.CommandHandler.Movies
 {
-    public class GetAllMoviesCommandHandler : IRequestHandler<GetAllMoviesCommand, Result<List<MovieDTO>>>
+    public class GetAllMoviesCommandHandler : IRequestHandler<GetAllMoviesCommand, Result<DataGridView<MovieDTO>>>
     {
         private readonly IMovieRepository _movieRepository;
         private readonly IMapper _mapper;
@@ -23,19 +24,18 @@ namespace MyLoveFilmes.Core.CommandHandler.Movies
             _memoryCache = memoryCache;
         }
 
-        public async Task<Result<List<MovieDTO>>> Handle(GetAllMoviesCommand command, CancellationToken cancellationToken)
+        public async Task<Result<DataGridView<MovieDTO>>> Handle(GetAllMoviesCommand command, CancellationToken cancellationToken)
         {
             int page = command.Page > 0 ? command.Page : 1;
             int pageSize = command.PageSize > 0 ? command.PageSize : 5;
-
             string cacheKey = $"{CacheKey}_Page_{page}_PageSize_{pageSize}";
 
             if (_memoryCache.TryGetValue(cacheKey, out List<Movie> cachedMovies))
             {
-                return Result.Ok(_mapper.Map<List<MovieDTO>>(cachedMovies));
+                return Result.Ok(_mapper.Map<DataGridView<MovieDTO>>(cachedMovies));
             }
 
-            List<Movie> movies = await _movieRepository.GetAllMovies(page, pageSize, cancellationToken);
+            DataGridView<Movie> movies = await _movieRepository.GetAllMovies(page, pageSize, cancellationToken);
 
             if (movies is null)
                 return Result.BadRequest("Erro ao recuperar todos os filmes");
@@ -46,7 +46,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Movies
                 SlidingExpiration = TimeSpan.FromMinutes(5)
             });
 
-            return Result.Ok(_mapper.Map<List<MovieDTO>>(movies));
+            return Result.Ok(_mapper.Map<DataGridView<MovieDTO>>(movies));
         }
     }
 }

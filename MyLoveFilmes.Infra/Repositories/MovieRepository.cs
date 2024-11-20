@@ -22,12 +22,14 @@ namespace MyLoveFilmes.Infra.Repositories
                                                           .ThenInclude(y => y.Genre)
                                                           .OrderByDescending(x => x.ReleaseYear);
 
+            int totalItems = await query.CountAsync(cancellationToken);
+
             if (!string.IsNullOrEmpty(searchValue))
             {
                 query = query.Where(x => x.Name.ToUpper().Contains(searchValue.ToUpper()));
             }
 
-            int totalItems = await query.CountAsync(cancellationToken);
+            int totalFiltered = await query.CountAsync(cancellationToken);
 
             List<Movie> list = await query.AsNoTracking()
                                           .Skip((page - 1) * pageSize)
@@ -39,10 +41,10 @@ namespace MyLoveFilmes.Infra.Repositories
                 Draw = draw,
                 Data = list,
                 RecordsTotal = totalItems,
-                RecordsFiltered = list.Count
-                
+                RecordsFiltered = totalFiltered
             };
         }
+
 
         public async Task<List<Movie>> GetMoviesRandom(CancellationToken cancellationToken)
         {

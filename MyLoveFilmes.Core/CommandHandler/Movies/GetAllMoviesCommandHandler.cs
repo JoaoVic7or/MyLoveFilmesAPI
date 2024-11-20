@@ -35,7 +35,7 @@ namespace MyLoveFilmes.Core.CommandHandler.Movies
                 return Result.Ok(_mapper.Map<DataGridView<MovieDTO>>(cachedMovies));
             }
 
-            DataGridView<Movie> movies = await _movieRepository.GetAllMovies(page, pageSize,cancellationToken, command.Draw);
+            DataGridView<Movie> movies = await _movieRepository.GetAllMovies(command.SearchValue, page, pageSize,cancellationToken, command.Draw);
 
             if (movies is null)
                 return Result.BadRequest("Erro ao recuperar todos os filmes");

@@ -14,13 +14,18 @@ namespace MyLoveFilmes.Infra.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<DataGridView<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken, int draw = 0)
+        public async Task<DataGridView<Movie>> GetAllMovies(string? searchValue, int page, int pageSize, CancellationToken cancellationToken, int draw = 0)
         {
             IQueryable<Movie> query = _appDbContext.Movies.AsQueryable()
                                                           .Include(x => x.Poster)
                                                           .Include(x => x.MovieGenres)
                                                           .ThenInclude(y => y.Genre)
                                                           .OrderByDescending(x => x.ReleaseYear);
+
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                query = query.Where(x => x.Name.ToUpper().Contains(searchValue.ToUpper()));
+            }
 
             int totalItems = await query.CountAsync(cancellationToken);
 

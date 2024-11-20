@@ -8,6 +8,8 @@
         public string CommentText { get; set; }
         public DateTime Date { get; set; }
 
+        public string UserName { get; set; }
+
         public string MovieName { get; set; }
     }
 }

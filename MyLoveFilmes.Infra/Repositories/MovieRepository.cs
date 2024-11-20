@@ -14,7 +14,7 @@ namespace MyLoveFilmes.Infra.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<DataGridView<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken)
+        public async Task<DataGridView<Movie>> GetAllMovies(int page, int pageSize, CancellationToken cancellationToken, int draw = 0)
         {
             IQueryable<Movie> query = _appDbContext.Movies.AsQueryable()
                                                           .Include(x => x.Poster)
@@ -31,6 +31,7 @@ namespace MyLoveFilmes.Infra.Repositories
 
             return new DataGridView<Movie>()
             {
+                Draw = draw,
                 Data = list,
                 RecordsTotal = totalItems,
                 RecordsFiltered = list.Count

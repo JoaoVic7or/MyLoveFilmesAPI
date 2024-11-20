@@ -9,5 +9,6 @@ namespace MyLoveFilmes.Core.Command.Movies
     {
         public int Page { get; set; }
         public int PageSize { get; set; }
+        public int Draw { get; set; }
     }
 }

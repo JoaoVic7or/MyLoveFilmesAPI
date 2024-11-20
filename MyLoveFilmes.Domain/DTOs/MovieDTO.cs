@@ -15,8 +15,7 @@ namespace MyLoveFilmes.Domain.DTOs
 
         public string Poster { get; set; }
 
-        //public ICollection<CommentDTO> Comments { get; set; }
-        //public ICollection<RatingsDTO> Ratings { get; set; }
+        public ICollection<CommentDTO> Comments { get; set; }
         public List<GenreDTO> Genres { get; set; }
     }
 }

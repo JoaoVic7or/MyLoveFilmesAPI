@@ -33,8 +33,17 @@ namespace MyLoveFilmes.Controllers
             return ResultHelper.AsResult(result);
         }
 
+        [Authorize]
         [HttpGet("GetCommentsByUser")]
         public async Task<IActionResult> GetCommentsByUserAsync([FromQuery] GetCommentsByUserCommand command)
+        {
+            Result result = await _mediator.Send(command);
+
+            return ResultHelper.AsResult(result);
+        }
+
+        [HttpGet("GetCommentsByMovie")]
+        public async Task<IActionResult> GetCommentsByMovieAsync([FromQuery] GetCommentsByMovieCommand command)
         {
             Result result = await _mediator.Send(command);
 

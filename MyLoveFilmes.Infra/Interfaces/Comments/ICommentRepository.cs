@@ -8,5 +8,6 @@ namespace MyLoveFilmes.Infra.Interfaces.Comments
         Task DeleteCommentAsync(Comment comment, CancellationToken cancellationToken);
         Task<Comment> GetCommentByUserMovie(long id, long userId, long movieId);
         Task<List<Comment>> GetCommentsByUser(long userId);
+        Task<List<Comment>> GetCommentsByMovieAsync(long movieId);
     }
 }

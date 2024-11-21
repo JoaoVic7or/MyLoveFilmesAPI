@@ -40,5 +40,17 @@ namespace MyLoveFilmes.Infra.Repositories.Comments
                                                .AsNoTracking()
                                                .ToListAsync();
         }
+
+        public async Task<List<Comment>> GetCommentsByMovieAsync(long movieId)
+        {
+            IQueryable<Comment> query = _appDbContext.Comments.Where(x => x.MovieId == movieId)
+                                                              .Include(x => x.User)
+                                                              .AsQueryable();
+
+            List<Comment> lista = await query.AsNoTracking()
+                                             .ToListAsync();
+
+            return lista;
+        }
     }
 }

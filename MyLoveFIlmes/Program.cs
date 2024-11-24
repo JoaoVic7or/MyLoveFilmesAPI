@@ -35,10 +35,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
-        builder => builder.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader());
+    options.AddPolicy("AllowSpecificOrigins", builder =>
+        builder.WithOrigins("http://localhost:5173", "http://192.168.0.3:5173")
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials());
 });
 
 //Autentica��o
@@ -96,7 +97,7 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 //app.UseMiddleware<JwtAuthenticationMiddleware>();
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowSpecificOrigins"); 
 app.MapHub<ChatHub>("/chatHub");
 
 // Configure the HTTP request pipeline.

@@ -2,12 +2,14 @@ using Microsoft.Extensions.DependencyInjection;
 using MyLoveFilmes.Infra.Interfaces;
 using MyLoveFilmes.Infra.Interfaces.Comments;
 using MyLoveFilmes.Infra.Interfaces.Genres;
+using MyLoveFilmes.Infra.Interfaces.Messages;
 using MyLoveFilmes.Infra.Interfaces.Ratings;
 using MyLoveFilmes.Infra.Interfaces.WatchsLists;
 using MyLoveFilmes.Infra.Repositories;
 using MyLoveFilmes.Infra.Repositories.Comments;
 using MyLoveFilmes.Infra.Repositories.FavoritesMovies;
 using MyLoveFilmes.Infra.Repositories.Genres;
+using MyLoveFilmes.Infra.Repositories.Messages;
 using MyLoveFilmes.Infra.Repositories.Ratings;
 using MyLoveFilmes.Infra.Repositories.WatchsLists;
 
@@ -36,6 +38,7 @@ namespace MyLoveFilmes.Infra
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IFavoriteMoviesRepository, FavoriteMoviesRepository>();
             services.AddScoped<IWatchListRepository, WatchListRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
         }
     }
 }

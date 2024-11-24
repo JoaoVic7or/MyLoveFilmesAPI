@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using MyLoveFilmes.Core.Services;
 using MyLoveFilmes.Core.Services.Interfaces;
+using MyLoveFilmes.Core.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -16,6 +17,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddRepositoriesApplication();
 builder.Services.AddScoped<IUserContextService, UserContextService>();
+builder.Services.AddSignalR();
 builder.Services.AddMediatR(configuration =>
 {
     var referencedAssemblies = Directory
@@ -39,7 +41,7 @@ builder.Services.AddCors(options =>
                           .AllowAnyHeader());
 });
 
-//Autenticação
+//Autenticaï¿½ï¿½o
 builder.Services.AddAuthentication(cfg => {
     cfg.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     cfg.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,6 +97,7 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 //app.UseMiddleware<JwtAuthenticationMiddleware>();
 app.UseCors("AllowAllOrigins");
+app.MapHub<ChatHub>("/chatHub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

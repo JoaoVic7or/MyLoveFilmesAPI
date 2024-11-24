@@ -19,4 +19,12 @@
     <ProjectReference Include="..\MyLoveFilmes.Shared\MyLoveFilmes.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Interfaces\Messages\" />
+    <None Remove="Repositories\Messages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\Messages\" />
+    <Folder Include="Repositories\Messages\" />
+  </ItemGroup>
 </Project>

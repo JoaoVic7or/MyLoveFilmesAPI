@@ -7,7 +7,7 @@ namespace MyLoveFilmes.Domain.Entities
         public string Email { get; private set; }
         public string Password { get; private set; }
         public int RoleId { get; private set; }
-        public string ProfilePicture { get; private set; }
+        public string? ProfilePicture { get; private set; }
 
         public Roles Roles { get; private set; }
         public ICollection<Comment> Comments { get; private set; }

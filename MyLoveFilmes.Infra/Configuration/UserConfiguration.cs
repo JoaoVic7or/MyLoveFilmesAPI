@@ -36,7 +36,8 @@ namespace MyLoveFilmes.Infra.Configuration
                    .IsRequired();
 
             builder.Property(x => x.ProfilePicture)
-                   .HasColumnName("image");
+                   .HasColumnName("image")
+                   .IsRequired(false);
                    
             builder.HasOne(x => x.Roles)
                    .WithMany(x => x.Users)

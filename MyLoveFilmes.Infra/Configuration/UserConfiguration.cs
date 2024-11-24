@@ -35,6 +35,9 @@ namespace MyLoveFilmes.Infra.Configuration
                    .HasMaxLength(255)
                    .IsRequired();
 
+            builder.Property(x => x.ProfilePicture)
+                   .HasColumnName("image");
+                   
             builder.HasOne(x => x.Roles)
                    .WithMany(x => x.Users)
                    .HasForeignKey(x => x.RoleId)

@@ -8,5 +8,6 @@
         public string Email { get; set; }
         public int Role { get; set; }
         public string ErrorMessage { get; set; }
+        public string ProfilePicture { get; set; }
     }
 }

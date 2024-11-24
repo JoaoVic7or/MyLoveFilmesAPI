@@ -57,7 +57,8 @@ namespace MyLoveFilmes.Core.CommandHandler
                 Token = token,
                 Name = user.Name,
                 Email = user.Email,
-                Role = user.RoleId
+                Role = user.RoleId,
+                ProfilePicture = user.ProfilePicture
             };
         }
 

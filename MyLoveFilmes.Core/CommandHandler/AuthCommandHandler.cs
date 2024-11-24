@@ -68,13 +68,19 @@ namespace MyLoveFilmes.Core.CommandHandler
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             var roleName = await _roleRepository.GetRolesByIdAsync(user.RoleId);
+
             if (roleName != null)
             {
                 claims.Add(new Claim(ClaimTypes.Role, roleName));
+            }
+
+            if (!string.IsNullOrEmpty(user.ProfilePicture))
+            {
+                claims.Add(new Claim("ProfilePicture", user.ProfilePicture));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

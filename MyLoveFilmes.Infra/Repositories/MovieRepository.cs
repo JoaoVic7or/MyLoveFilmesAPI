@@ -51,6 +51,7 @@ namespace MyLoveFilmes.Infra.Repositories
             IQueryable<Movie> query = _appDbContext.Movies;
 
             return await query.Include(x => x.Poster)
+                              .Include(x => x.Ratings)
                               .Include(x => x.MovieGenres)
                               .ThenInclude(y => y.Genre)
                               .Where(x => x.Poster != null)

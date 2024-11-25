@@ -10,6 +10,8 @@
 
         public string UserName { get; set; }
 
+        public UserDTO User { get; set; }
+
         public string MovieName { get; set; }
     }
 }

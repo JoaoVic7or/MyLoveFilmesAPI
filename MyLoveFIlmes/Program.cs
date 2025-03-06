@@ -2,12 +2,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MyLoveFilmes.Infra;
-using MyLoveFIlmes.Middlewares;
 using System.Reflection;
 using System.Text;
 using MyLoveFilmes.Core.Services;
 using MyLoveFilmes.Core.Services.Interfaces;
-using MyLoveFilmes.Core.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -96,9 +94,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 var app = builder.Build();
-//app.UseMiddleware<JwtAuthenticationMiddleware>();
 app.UseCors("AllowSpecificOrigins"); 
-app.MapHub<ChatHub>("/chatHub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -58,7 +58,6 @@ namespace MyLoveFilmes.Core.CommandHandler
                 Name = user.Name,
                 Email = user.Email,
                 Role = user.RoleId,
-                ProfilePicture = user.ProfilePicture
             };
         }
 
@@ -76,11 +75,6 @@ namespace MyLoveFilmes.Core.CommandHandler
             if (roleName != null)
             {
                 claims.Add(new Claim(ClaimTypes.Role, roleName));
-            }
-
-            if (!string.IsNullOrEmpty(user.ProfilePicture))
-            {
-                claims.Add(new Claim("ProfilePicture", user.ProfilePicture));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

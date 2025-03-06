@@ -34,10 +34,6 @@ namespace MyLoveFilmes.Infra.Configuration
                    .HasColumnName("Password")
                    .HasMaxLength(255)
                    .IsRequired();
-
-            builder.Property(x => x.ProfilePicture)
-                   .HasColumnName("image")
-                   .IsRequired(false);
                    
             builder.HasOne(x => x.Roles)
                    .WithMany(x => x.Users)

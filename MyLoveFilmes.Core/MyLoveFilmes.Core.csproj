@@ -20,14 +20,4 @@
     <ProjectReference Include="..\MyLoveFilmes.Shared\MyLoveFilmes.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Command\Messages\" />
-    <None Remove="CommandHandler\Messages\" />
-    <None Remove="Hubs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\Messages\" />
-    <Folder Include="CommandHandler\Messages\" />
-    <Folder Include="Hubs\" />
-  </ItemGroup>
 </Project>

@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 #Visual Studio Mac
 .idea/
+
+**/appsettings.json
+**/appsettings.Development.json
